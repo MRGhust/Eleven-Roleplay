@@ -60,10 +60,10 @@
               <span class="inline-flex" id="themeIcon" aria-hidden="true">🌙</span>
               <span class="hidden xs:inline" id="themeText">دارک</span>
             </button>
-            <!-- Cart (نمایشی) -->
-            <button id="cartBtn" class="relative rounded-xl px-3 py-2 text-sm font-semibold hover:bg-white/60 dark:hover:bg-white/10 transition flex items-center gap-2" title="سبد خرید">
+            <!-- Cart Button -->
+            <button id="cartBtn" onclick="toggleCart(true)" class="relative rounded-xl px-3 py-2 text-sm font-semibold hover:bg-white/60 dark:hover:bg-white/10 transition flex items-center gap-2" title="سبد خرید">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"><path d="M2.25 3a.75.75 0 000 1.5h1.513l.401 2.104 1.2 6.297A3.75 3.75 0 009.05 16.5h6.9a3.75 3.75 0 003.686-3.099l.99-5.445A.75.75 0 0019.8 7.2l-.99 5.445a2.25 2.25 0 01-2.21 1.855H9.05a2.25 2.25 0 01-2.212-1.8L5.04 6.3A.75.75 0 004.3 5.7H2.25z"/><path d="M7.5 20.25a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM18 20.25a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/></svg>
-              <span id="cartCount" class="absolute -top-1 -left-1 inline-flex h-5 min-w-[20px] items-center justify-center rounded-full bg-teal-600 text-white text-xs px-1">0</span>
+              <span id="cartCount" class="absolute -top-1 -left-1 inline-flex h-5 min-w-[20px] items-center justify-center rounded-full bg-teal-600 text-white text-xs px-1 transition-transform">0</span>
               <span class="hidden sm:inline">سبد خرید</span>
             </button>
             <div class="h-6 w-px bg-slate-300 dark:bg-slate-700"></div>
@@ -210,7 +210,7 @@
             <p class="text-slate-600 dark:text-slate-300 text-sm mt-1 mb-4">شامل پول اولیه، یک ماشین معمولی و گواهینامه.</p>
             <div class="flex items-center justify-between">
               <p class="font-bold text-lg grad bg-clip-text text-transparent">50,000 تومان</p>
-              <button onclick="addToCart()" class="rounded-lg px-4 py-2 text-sm font-semibold bg-slate-900 text-white dark:bg-white dark:text-slate-900 hover:opacity-90 transition">خرید</button>
+              <button onclick="addToCart({id: 'p1', name: 'پکیج استارتر', price: 50000, img: 'https://placehold.co/80x80/427c77/ffffff?text=SP'})" class="rounded-lg px-4 py-2 text-sm font-semibold bg-slate-900 text-white dark:bg-white dark:text-slate-900 hover:opacity-90 transition">خرید</button>
             </div>
           </div>
         </div>
@@ -222,7 +222,7 @@
             <p class="text-slate-600 dark:text-slate-300 text-sm mt-1 mb-4">دسترسی به ماشین‌های خاص، اسکین‌های ویژه و اولویت در ورود.</p>
             <div class="flex items-center justify-between">
               <p class="font-bold text-lg grad bg-clip-text text-transparent">150,000 تومان</p>
-              <button onclick="addToCart()" class="rounded-lg px-4 py-2 text-sm font-semibold bg-slate-900 text-white dark:bg-white dark:text-slate-900 hover:opacity-90 transition">خرید</button>
+              <button onclick="addToCart({id: 'p2', name: 'اشتراک VIP', price: 150000, img: 'https://placehold.co/80x80/64c2b8/ffffff?text=VIP'})" class="rounded-lg px-4 py-2 text-sm font-semibold bg-slate-900 text-white dark:bg-white dark:text-slate-900 hover:opacity-90 transition">خرید</button>
             </div>
           </div>
         </div>
@@ -234,9 +234,43 @@
             <p class="text-slate-600 dark:text-slate-300 text-sm mt-1 mb-4">یک ماشین اسپرت رده بالا به انتخاب شما.</p>
             <div class="flex items-center justify-between">
               <p class="font-bold text-lg grad bg-clip-text text-transparent">200,000 تومان</p>
-              <button onclick="addToCart()" class="rounded-lg px-4 py-2 text-sm font-semibold bg-slate-900 text-white dark:bg-white dark:text-slate-900 hover:opacity-90 transition">خرید</button>
+              <button onclick="addToCart({id: 'p3', name: 'پکیج ماشین اسپرت', price: 200000, img: 'https://placehold.co/80x80/427c77/ffffff?text=Car'})" class="rounded-lg px-4 py-2 text-sm font-semibold bg-slate-900 text-white dark:bg-white dark:text-slate-900 hover:opacity-90 transition">خرید</button>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Cart Modal -->
+  <div id="cartModal" class="fixed inset-0 z-[70] hidden bg-black/40" onclick="toggleCart(false)">
+    <div class="absolute inset-y-0 left-0 w-full max-w-md shadow-2xl p-6" style="background:var(--card-bg); border-right:1px solid var(--glass-br);" onclick="event.stopPropagation()">
+      <div class="flex flex-col h-full">
+        <!-- Header -->
+        <div class="flex items-center justify-between mb-6 pb-4 border-b border-[color:var(--glass-br)]">
+          <h2 class="text-2xl font-extrabold">سبد خرید</h2>
+          <button class="rounded-lg p-2 hover:bg-white/60 dark:hover:bg-white/10" onclick="toggleCart(false)" title="بستن">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5"><path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" /></svg>
+          </button>
+        </div>
+        <!-- Cart Items -->
+        <div id="cartItemsContainer" class="flex-grow overflow-y-auto pr-2">
+          <!-- Items will be injected here -->
+          <div id="emptyCartMsg" class="text-center py-10">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-16 h-16 mx-auto text-slate-300 dark:text-slate-600 mb-4">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c.51 0 .962-.343 1.087-.835l.383-1.437M7.5 14.25L5.106 5.165A2.25 2.25 0 002.854 3H2.25" />
+            </svg>
+            <p class="font-bold">سبد خرید شما خالی است.</p>
+            <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">آیتم‌های فروشگاه را مشاهده کنید.</p>
+          </div>
+        </div>
+        <!-- Footer -->
+        <div id="cartFooter" class="pt-4 border-t border-[color:var(--glass-br)]">
+           <div class="flex justify-between items-center mb-4">
+             <span class="text-lg font-bold">جمع کل:</span>
+             <span id="cartTotal" class="text-xl font-extrabold grad bg-clip-text text-transparent">0 تومان</span>
+           </div>
+           <button id="checkoutBtn" class="w-full rounded-xl grad text-white py-3 font-bold hover:opacity-90 transition disabled:opacity-50" disabled>پرداخت</button>
         </div>
       </div>
     </div>
@@ -280,7 +314,6 @@
       const nowDark = !document.documentElement.classList.contains('dark');
       setTheme(nowDark ? 'dark' : 'light');
     });
-    // initialize text/icon
     setTheme(document.documentElement.classList.contains('dark') ? 'dark' : 'light');
 
     // --------- Footer year ---------
@@ -300,22 +333,95 @@
     const base = 120; const jitter = ()=> Math.floor(base + Math.random()*20);
     setInterval(()=>{ const el = document.getElementById('onlineCount'); if(el) el.textContent = jitter(); }, 4000);
     
-    // --------- Cart (visual only) ---------
-    let cartItemCount = 0;
+    // --------- Shop Modal ---------
+    const shopModal = document.getElementById('shopModal');
+    function toggleShop(state){
+      shopModal.classList.toggle('hidden', !state);
+    }
+
+    // --------- Cart System ---------
+    let cartItems = [];
+    const cartModal = document.getElementById('cartModal');
     const cartCountEl = document.getElementById('cartCount');
-    function addToCart() {
-        cartItemCount++;
-        cartCountEl.textContent = cartItemCount;
+    const cartItemsContainer = document.getElementById('cartItemsContainer');
+    const emptyCartMsg = document.getElementById('emptyCartMsg');
+    const cartFooter = document.getElementById('cartFooter');
+    const cartTotalEl = document.getElementById('cartTotal');
+    const checkoutBtn = document.getElementById('checkoutBtn');
+
+    function toggleCart(state) {
+        cartModal.classList.toggle('hidden', !state);
+    }
+
+    function addToCart(product) {
+        const existingItem = cartItems.find(item => item.id === product.id);
+        if (existingItem) {
+            existingItem.quantity++;
+        } else {
+            cartItems.push({ ...product, quantity: 1 });
+        }
+        updateCart();
         cartCountEl.classList.add('scale-125');
         setTimeout(() => cartCountEl.classList.remove('scale-125'), 200);
     }
 
-    // --------- Shop Modal ---------
-    const shopModal = document.getElementById('shopModal');
-    function toggleShop(state){
-      if(state === undefined) state = shopModal.classList.contains('hidden');
-      shopModal.classList.toggle('hidden', !state);
+    function updateCartItemQuantity(productId, change) {
+        const item = cartItems.find(item => item.id === productId);
+        if (item) {
+            item.quantity += change;
+            if (item.quantity <= 0) {
+                cartItems = cartItems.filter(i => i.id !== productId);
+            }
+        }
+        updateCart();
     }
+
+    function updateCart() {
+        renderCartItems();
+        updateCartCount();
+        updateCartTotal();
+    }
+    
+    function renderCartItems() {
+        if (cartItems.length === 0) {
+            emptyCartMsg.style.display = 'block';
+            cartItemsContainer.innerHTML = '';
+            cartItemsContainer.appendChild(emptyCartMsg);
+            cartFooter.style.display = 'none';
+        } else {
+            emptyCartMsg.style.display = 'none';
+            cartFooter.style.display = 'block';
+            cartItemsContainer.innerHTML = cartItems.map(item => `
+              <div class="flex items-center gap-4 py-3">
+                <img src="${item.img}" alt="${item.name}" class="w-16 h-16 rounded-lg object-cover">
+                <div class="flex-grow">
+                  <p class="font-bold">${item.name}</p>
+                  <p class="text-sm text-slate-500 dark:text-slate-400">${item.price.toLocaleString('fa-IR')} تومان</p>
+                </div>
+                <div class="flex items-center gap-2">
+                  <button onclick="updateCartItemQuantity('${item.id}', -1)" class="w-7 h-7 rounded-md flex items-center justify-center bg-slate-200/60 dark:bg-slate-700/60 hover:bg-slate-300 dark:hover:bg-slate-600">-</button>
+                  <span class="w-6 text-center font-bold">${item.quantity}</span>
+                  <button onclick="updateCartItemQuantity('${item.id}', 1)" class="w-7 h-7 rounded-md flex items-center justify-center bg-slate-200/60 dark:bg-slate-700/60 hover:bg-slate-300 dark:hover:bg-slate-600">+</button>
+                </div>
+              </div>
+            `).join('');
+        }
+    }
+
+    function updateCartCount() {
+        const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+        cartCountEl.textContent = totalItems;
+    }
+
+    function updateCartTotal() {
+        const total = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        cartTotalEl.textContent = `${total.toLocaleString('fa-IR')} تومان`;
+        checkoutBtn.disabled = total === 0;
+    }
+    
+    // Initial cart render
+    updateCart();
+
 
     // --------- Auth (mock) ---------
     const authKey = 'er_auth';
@@ -323,7 +429,6 @@
     const authError = document.getElementById('authError');
 
     function toggleAuth(state){
-      if(state===undefined) state = authModal.classList.contains('hidden');
       authModal.classList.toggle('hidden', !state);
     }
     
