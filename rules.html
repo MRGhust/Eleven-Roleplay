@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>قوانین — Eleven Roleplay</title>
+  <meta name="description" content="Eleven Roleplay — وب‌سایت سرور رول‌پلی فایوم با طراحی مینیمال، دارک/لایت و افکت شیشه‌ای." />
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script> tailwind.config = { darkMode: 'class' } </script>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors">
+  <header class="sticky top-0 z-50">
+    <div class="grad h-1 w-full"></div>
+    <nav class="glass border-b">
+      <div class="mx-auto max-w-6xl px-4">
+        <div class="flex h-16 items-center justify-between">
+          <a href="index.html" class="flex items-center gap-2 group">
+            <span class="inline-block h-8 w-8 rounded-xl grad shadow-md"></span>
+            <span class="text-xl font-extrabold tracking-wide text-slate-900 dark:text-white group-hover:opacity-80 transition">Eleven Roleplay</span>
+          </a>
+          <div id="topnav" class="hidden md:flex items-center gap-1">
+            <a data-nav="index.html" href="index.html" class="px-3 py-2 text-sm font-medium rounded-xl hover:bg-white/60 dark:hover:bg-white/10 transition">هوم</a>
+            <a data-nav="shop.html" href="shop.html" class="px-3 py-2 text-sm font-medium rounded-xl hover:bg-white/60 dark:hover:bg-white/10 transition">شاپ</a>
+            <a data-nav="team.html" href="team.html" class="px-3 py-2 text-sm font-medium rounded-xl hover:bg-white/60 dark:hover:bg-white/10 transition">تیم</a>
+            <a data-nav="rules.html" href="rules.html" class="px-3 py-2 text-sm font-medium rounded-xl hover:bg-white/60 dark:hover:bg-white/10 transition">قوانین</a>
+            <a data-nav="privacy.html" href="privacy.html" class="px-3 py-2 text-sm font-medium rounded-xl hover:bg-white/60 dark:hover:bg-white/10 transition">حریم خصوصی</a>
+          </div>
+          <div class="flex items-center gap-2 sm:gap-3">
+            <button id="themeToggle" class="interactive-button rounded-xl px-3 py-2 text-sm font-semibold hover:bg-white/60 dark:hover:bg-white/10 transition flex items-center gap-2" title="تغییر تم" aria-label="تغییر تم">
+              <span class="inline-flex" id="themeIcon" aria-hidden="true">🌙</span>
+              <span class="hidden xs:inline" id="themeText">دارک</span>
+            </button>
+            <button id="cartBtn" class="interactive-button relative rounded-xl px-3 py-2 text-sm font-semibold hover:bg-white/60 dark:hover:bg-white/10 transition flex items-center gap-2" title="سبد خرید">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"><path d="M2.25 3a.75.75 0 000 1.5h1.513l.401 2.104 1.2 6.297A3.75 3.75 0 009.05 16.5h6.9a3.75 3.75 0 003.686-3.099l.99-5.445A.75.75 0 0019.8 7.2l-.99 5.445a2.25 2.25 0 01-2.21 1.855H9.05a2.25 2.25 0 01-2.212-1.8L5.04 6.3A.75.75 0 004.3 5.7H2.25z"/><path d="M7.5 20.25a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM18 20.25a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/></svg>
+              <span id="cartCount" class="absolute -top-1 -left-1 inline-flex h-5 min-w-[20px] items-center justify-center rounded-full bg-teal-600 text-white text-xs px-1 transition-transform">0</span>
+              <span class="hidden sm:inline">سبد خرید</span>
+            </button>
+            <div class="h-6 w-px bg-slate-300 dark:bg-slate-700"></div>
+            <button id="authBtn" class="interactive-button rounded-xl px-3 py-2 text-sm font-semibold bg-slate-900 text-white dark:bg-white dark:text-slate-900 hover:opacity-90 transition flex items-center gap-2" title="ورود به حساب"></button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <div class="liquid-blob b1"></div>
+  <div class="liquid-blob b2"></div>
+
+  <main class="py-12">
+    <div class="mx-auto max-w-4xl px-4">
+      <h1 class="text-2xl sm:text-3xl font-extrabold mb-6">قوانین سرور</h1>
+      <div class="rounded-2xl p-6 ring-soft" style="background:var(--card-bg); border:1px solid var(--glass-br)">
+        <ol class="list-decimal pr-5 space-y-2 text-slate-700 dark:text-slate-300 leading-8">
+          <li><span class="font-bold">رعایت رول‌پلی:</span> خروج از نقش (OOC) در میانه سناریو ممنوع است.</li>
+          <li><span class="font-bold">بدون تقلب:</span> هرگونه چیت یا سوءاستفاده از باگ = بن.</li>
+          <li><span class="font-bold">احترام:</span> توهین/تحقیر کاربران، آزار، نژادپرستی و … خط قرمز است.</li>
+          <li><span class="font-bold">رانندگی ایمن:</span> تصادف عمدی، رَم‌کردن بی‌دلیل یا تخریب اموال عمومی ممنوع.</li>
+          <li><span class="font-bold">اقتصاد سالم:</span> پول‌شویی، انتقال غیرمنطقی دارایی بین کاراکترها و دزدی بانکی خارج از سناریو ممنوع.</li>
+          <li><span class="font-bold">گروه‌های خلاف:</span> تشکیل/عضویت با هماهنگی مدیریت و رعایت خط داستانی.</li>
+          <li><span class="font-bold">گزارش:</span> تخلفات را با مدرک در دیسکورد گزارش کنید.</li>
+          <li><span class="font-bold">تغییرات:</span> قوانین ممکن است به‌روزرسانی شود. آخرین نسخه همین صفحه است.</li>
+        </ol>
+      </div>
+    </div>
+  </main>
+
+  <footer class="py-10">
+    <div class="mx-auto max-w-6xl px-4">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="text-sm text-slate-500 dark:text-slate-400">© <span id="year"></span> Eleven Roleplay — ساخته شده با عشق ❤️</p>
+        <div class="text-sm text-slate-500 dark:text-slate-400 flex items-center gap-3">
+          <a class="hover:underline" href="rules.html">قوانین</a>
+          <span class="opacity-40">|</span>
+          <a class="hover:underline" href="privacy.html">حریم خصوصی</a>
+          <span class="opacity-40">|</span>
+          <a class="hover:underline" href="https://discord.com" target="_blank" rel="noopener">دیسکرد</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

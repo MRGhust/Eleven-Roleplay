@@ -4,126 +4,68 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Eleven Roleplay — سرور رول‌پلی فایوم</title>
-  <meta name="description" content="سایت ساده و زیبا برای سرور رول‌پلی فایوم: هوم و تیم مدیریتی با طراحی مینیمال + دارک/لایت + لیکوئید گلس." />
+  <meta name="description" content="Eleven Roleplay — وب‌سایت سرور رول‌پلی فایوم با طراحی مینیمال، دارک/لایت و افکت شیشه‌ای." />
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    // فعال‌سازی دارک‌مود بر اساس کلاس
-    tailwind.config = { darkMode: 'class' }
-  </script>
-  <style>
-    :root{--brand:#427c77; --brand-2:#64c2b8; --glass-bg:rgba(255,255,255,.55); --glass-br:rgba(255,255,255,.35); --card-bg:#ffffff; --ring:rgba(0,0,0,.06)}
-    .dark:root{--glass-bg:rgba(20,24,32,.55); --glass-br:rgba(255,255,255,.06); --card-bg:#0f172a; --ring:rgba(255,255,255,.08)}
-    html{scroll-behavior:smooth}
-    body{font-family:'Vazirmatn', system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif; overflow-x: hidden;}
-    .glass{backdrop-filter:saturate(160%) blur(10px); background:var(--glass-bg); border-color:var(--glass-br)}
-    .grad{background:linear-gradient(135deg,var(--brand),var(--brand-2))}
-    .liquid-blob{position:absolute; filter:blur(40px); opacity:.35; pointer-events:none}
-    .liquid-blob.b1{inset:auto auto -30% -20%; width:50vw; height:50vw; background:radial-gradient(closest-side,#64c2b8,transparent 70%)}
-    .liquid-blob.b2{inset:-30% -10% auto auto; width:45vw; height:45vw; background:radial-gradient(closest-side,#427c77,transparent 70%)}
-    .dark .liquid-blob{opacity:.22}
-    
-    /* --- General Animation Utilities --- */
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeOutLeft {
-      from { opacity: 1; transform: translateX(0); }
-      to { opacity: 0; transform: translateX(-20px); }
-    }
-
-    /* --- Modal Animations --- */
-    .modal { transition: visibility 0s 0.3s; }
-    .modal.hidden { visibility: hidden; transition: visibility 0s; }
-    .modal-backdrop { background-color: rgba(0,0,0,0.4); transition: opacity 0.3s ease-in-out; }
-    .modal.hidden .modal-backdrop { opacity: 0; }
-    .modal-content { transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; }
-    .modal.hidden .modal-content { opacity: 0; transform: scale(0.95); }
-    /* Cart modal slide-in animation */
-    .modal-cart .modal-content { transform: translateX(-100%); transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
-    .modal:not(.hidden).modal-cart .modal-content { transform: translateX(0); }
-    .modal.hidden.modal-cart .modal-content { transform: translateX(-100%); }
-
-    /* --- Hero Animations --- */
-    .hero-animate { animation: fadeInUp 0.8s ease-out backwards; }
-    .hero-image { transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1); }
-    .group:hover .hero-image { transform: scale(1.05); }
-
-    /* --- Card Animations & Hovers --- */
-    .animated-card { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s ease-out; }
-    .animated-card.is-visible { opacity: 1; transform: translateY(0); }
-    .animated-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,.1); }
-    .dark .animated-card:hover { box-shadow: 0 15px 30px rgba(0,0,0,.2); }
-    .cart-item.removing { animation: fadeOutLeft 0.3s ease-out forwards; }
-
-    /* --- Button Interactivity --- */
-    .interactive-button { transition: transform 0.2s ease; }
-    .interactive-button:active { transform: scale(0.96); }
-  </style>
+  <script> tailwind.config = { darkMode: 'class' } </script>
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors">
-  <!-- Header / Navbar -->
   <header class="sticky top-0 z-50">
     <div class="grad h-1 w-full"></div>
     <nav class="glass border-b">
       <div class="mx-auto max-w-6xl px-4">
         <div class="flex h-16 items-center justify-between">
-          <!-- Left: brand name -->
-          <a href="#home" class="flex items-center gap-2 group">
+          <a href="index.html" class="flex items-center gap-2 group">
             <span class="inline-block h-8 w-8 rounded-xl grad shadow-md"></span>
             <span class="text-xl font-extrabold tracking-wide text-slate-900 dark:text-white group-hover:opacity-80 transition">Eleven Roleplay</span>
           </a>
-          <!-- Center: nav links -->
-          <div class="hidden md:flex items-center gap-1">
-            <a href="#home" class="px-3 py-2 text-sm font-medium rounded-xl hover:bg-white/60 dark:hover:bg-white/10 transition">هوم</a>
-            <a href="#" onclick="toggleModal(document.getElementById('shopModal'), true); return false;" class="px-3 py-2 text-sm font-medium rounded-xl hover:bg-white/60 dark:hover:bg-white/10 transition">شاپ</a>
+          <div id="topnav" class="hidden md:flex items-center gap-1">
+            <a data-nav="index.html" href="index.html" class="px-3 py-2 text-sm font-medium rounded-xl hover:bg-white/60 dark:hover:bg-white/10 transition">هوم</a>
+            <a data-nav="shop.html" href="shop.html" class="px-3 py-2 text-sm font-medium rounded-xl hover:bg-white/60 dark:hover:bg-white/10 transition">شاپ</a>
+            <a data-nav="team.html" href="team.html" class="px-3 py-2 text-sm font-medium rounded-xl hover:bg-white/60 dark:hover:bg-white/10 transition">تیم</a>
+            <a data-nav="rules.html" href="rules.html" class="px-3 py-2 text-sm font-medium rounded-xl hover:bg-white/60 dark:hover:bg-white/10 transition">قوانین</a>
+            <a data-nav="privacy.html" href="privacy.html" class="px-3 py-2 text-sm font-medium rounded-xl hover:bg-white/60 dark:hover:bg-white/10 transition">حریم خصوصی</a>
           </div>
-          <!-- Right: actions -->
           <div class="flex items-center gap-2 sm:gap-3">
-            <!-- Theme toggle -->
-            <button id="themeToggle" class="interactive-button rounded-xl px-3 py-2 text-sm font-semibold hover:bg-white/60 dark:hover:bg-white/10 transition flex items-center gap-2" title="تغییر تم" aria-label="تغییر تم بین حالت تاریک و روشن">
+            <button id="themeToggle" class="interactive-button rounded-xl px-3 py-2 text-sm font-semibold hover:bg-white/60 dark:hover:bg-white/10 transition flex items-center gap-2" title="تغییر تم" aria-label="تغییر تم">
               <span class="inline-flex" id="themeIcon" aria-hidden="true">🌙</span>
               <span class="hidden xs:inline" id="themeText">دارک</span>
             </button>
-            <!-- Cart Button -->
-            <button id="cartBtn" onclick="toggleModal(document.getElementById('cartModal'), true)" class="interactive-button relative rounded-xl px-3 py-2 text-sm font-semibold hover:bg-white/60 dark:hover:bg-white/10 transition flex items-center gap-2" title="سبد خرید">
+            <button id="cartBtn" class="interactive-button relative rounded-xl px-3 py-2 text-sm font-semibold hover:bg-white/60 dark:hover:bg-white/10 transition flex items-center gap-2" title="سبد خرید">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"><path d="M2.25 3a.75.75 0 000 1.5h1.513l.401 2.104 1.2 6.297A3.75 3.75 0 009.05 16.5h6.9a3.75 3.75 0 003.686-3.099l.99-5.445A.75.75 0 0019.8 7.2l-.99 5.445a2.25 2.25 0 01-2.21 1.855H9.05a2.25 2.25 0 01-2.212-1.8L5.04 6.3A.75.75 0 004.3 5.7H2.25z"/><path d="M7.5 20.25a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM18 20.25a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/></svg>
               <span id="cartCount" class="absolute -top-1 -left-1 inline-flex h-5 min-w-[20px] items-center justify-center rounded-full bg-teal-600 text-white text-xs px-1 transition-transform">0</span>
               <span class="hidden sm:inline">سبد خرید</span>
             </button>
             <div class="h-6 w-px bg-slate-300 dark:bg-slate-700"></div>
-            <button id="authBtn" class="interactive-button rounded-xl px-3 py-2 text-sm font-semibold bg-slate-900 text-white dark:bg-white dark:text-slate-900 hover:opacity-90 transition flex items-center gap-2" title="ورود به حساب">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"><path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/><path fill-rule="evenodd" d="M3.75 20.1a8.25 8.25 0 1116.5 0 .9.9 0 01-.9.9H4.65a.9.9 0 01-.9-.9z" clip-rule="evenodd"/></svg>
-              <span class="hidden xs:inline">ورود / ساخت حساب</span>
-            </button>
+            <button id="authBtn" class="interactive-button rounded-xl px-3 py-2 text-sm font-semibold bg-slate-900 text-white dark:bg-white dark:text-slate-900 hover:opacity-90 transition flex items-center gap-2" title="ورود به حساب"></button>
           </div>
         </div>
       </div>
     </nav>
   </header>
-
-  <!-- Decorative liquid blobs -->
   <div class="liquid-blob b1"></div>
   <div class="liquid-blob b2"></div>
 
   <main>
-    <!-- Hero / Home -->
     <section id="home" class="relative overflow-hidden">
       <div class="absolute inset-0 -z-10 grad opacity-20"></div>
       <div class="mx-auto max-w-6xl px-4 py-16 sm:py-24">
         <div class="grid md:grid-cols-2 items-center gap-10">
           <div>
             <h1 class="hero-animate text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight text-slate-900 dark:text-white" style="animation-delay: 0.2s;">
-              خوش اومدی به <span class="bg-clip-text text-transparent grad">Eleven Roleplay</span>
+              خوش اومدی به <span class="grad-text">Eleven Roleplay</span>
             </h1>
-            <p class="hero-animate mt-4 text-slate-600 dark:text-slate-300 leading-8" style="animation-delay: 0.4s;">سرور رول‌پلی فایوم با قوانین منصفانه، اکشن واقعی و جامعه دوستانه. همین الان وصل شو و داستانت رو شروع کن.</p>
+            <p class="hero-animate mt-4 text-slate-600 dark:text-slate-300 leading-8" style="animation-delay: 0.4s;">
+              سرور رول‌پلی فایوم با قوانین منصفانه، اکشن واقعی و جامعه دوستانه. همین الان وصل شو و داستانت رو شروع کن.
+            </p>
             <div class="hero-animate mt-6 flex flex-wrap gap-3" style="animation-delay: 0.6s;">
-              <button class="interactive-button rounded-2xl px-5 py-3 bg-slate-900 text-white dark:bg-white dark:text-slate-900 font-bold hover:opacity-90 transition" onclick="copyIP()">کپی IP سرور</button>
-              <a href="#team" class="interactive-button rounded-2xl px-5 py-3 bg-white/80 dark:bg-white/10 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-slate-100 font-bold hover:bg-white transition">تیم مدیریتی</a>
-              <a href="https://discord.com" target="_blank" class="interactive-button rounded-2xl px-5 py-3 bg-white/80 dark:bg-white/10 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-slate-100 font-bold hover:bg-white transition">دیسکرد</a>
+              <button id="copyIPBtn" class="interactive-button rounded-2xl px-5 py-3 bg-slate-900 text-white dark:bg-white dark:text-slate-900 font-bold hover:opacity-90 transition" onclick="copyIP()">کپی IP سرور</button>
+              <a href="team.html" class="interactive-button rounded-2xl px-5 py-3 bg-white/80 dark:bg-white/10 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-slate-100 font-bold hover:bg-white transition">تیم مدیریتی</a>
+              <a href="shop.html" class="interactive-button rounded-2xl px-5 py-3 bg-white/80 dark:bg-white/10 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-slate-100 font-bold hover:bg-white transition">شاپ</a>
             </div>
             <p id="copyNote" class="mt-3 text-sm text-green-700 dark:text-green-400 opacity-0 transition-opacity duration-300">IP کپی شد!</p>
             <div class="mt-6 text-sm text-slate-500 dark:text-slate-400">IP: <code id="serverIP" class="font-mono">your.ip.here:30120</code></div>
@@ -146,33 +88,32 @@
       </div>
     </section>
 
-    <!-- Features -->
     <section class="py-12">
       <div class="mx-auto max-w-6xl px-4">
         <div class="grid sm:grid-cols-3 gap-6">
           <div class="animated-card rounded-2xl p-6 text-center" style="background:var(--card-bg); box-shadow:0 6px 20px rgba(0,0,0,.06); border:1px solid var(--glass-br)">
             <div class="inline-block p-4 rounded-2xl grad mb-4 shadow-md">
-               <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                 <path stroke-linecap="round" stroke-linejoin="round" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
-               </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
+              </svg>
             </div>
             <p class="font-extrabold mb-2">اقتصاد متعادل</p>
             <p class="text-slate-600 dark:text-slate-300 text-sm">قیمت‌ها منطقی و فرصت رشد برای همه.</p>
           </div>
           <div class="animated-card rounded-2xl p-6 text-center" style="background:var(--card-bg); box-shadow:0 6px 20px rgba(0,0,0,.06); border:1px solid var(--glass-br); transition-delay: 150ms;">
-             <div class="inline-block p-4 rounded-2xl grad mb-4 shadow-md">
-               <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-               </svg>
+            <div class="inline-block p-4 rounded-2xl grad mb-4 shadow-md">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
             </div>
             <p class="font-extrabold mb-2">پشتیبانی سریع</p>
             <p class="text-slate-600 dark:text-slate-300 text-sm">تیم مدیریت فعال و پاسخگو.</p>
           </div>
           <div class="animated-card rounded-2xl p-6 text-center" style="background:var(--card-bg); box-shadow:0 6px 20px rgba(0,0,0,.06); border:1px solid var(--glass-br); transition-delay: 300ms;">
             <div class="inline-block p-4 rounded-2xl grad mb-4 shadow-md">
-               <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                 <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-               </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
             </div>
             <p class="font-extrabold mb-2">ایونت‌های منظم</p>
             <p class="text-slate-600 dark:text-slate-300 text-sm">هر هفته ایونت‌های جذاب و چالشی.</p>
@@ -181,7 +122,6 @@
       </div>
     </section>
 
-    <!-- Team Section -->
     <section id="team" class="py-16">
       <div class="mx-auto max-w-6xl px-4">
         <h2 class="text-2xl sm:text-3xl font-extrabold mb-8 text-center">تیم مدیریتی</h2>
@@ -206,299 +146,20 @@
     </section>
   </main>
 
-  <!-- Footer -->
   <footer class="py-10">
     <div class="mx-auto max-w-6xl px-4">
       <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p class="text-sm text-slate-500 dark:text-slate-400">© <span id="year"></span> Eleven Roleplay — ساخته شده توسط NOBODY با عشق ❤️</p>
+        <p class="text-sm text-slate-500 dark:text-slate-400">© <span id="year"></span> Eleven Roleplay — ساخته شده با عشق ❤️</p>
         <div class="text-sm text-slate-500 dark:text-slate-400 flex items-center gap-3">
-          <a class="hover:underline" href="#home">قوانین</a>
+          <a class="hover:underline" href="rules.html">قوانین</a>
           <span class="opacity-40">|</span>
-          <a class="hover:underline" href="#home">حریم خصوصی</a>
+          <a class="hover:underline" href="privacy.html">حریم خصوصی</a>
+          <span class="opacity-40">|</span>
+          <a class="hover:underline" href="https://discord.com" target="_blank" rel="noopener">دیسکرد</a>
         </div>
       </div>
     </div>
   </footer>
-
-  <!-- Shop Modal -->
-  <div id="shopModal" class="modal fixed inset-0 z-[70] hidden" onclick="toggleModal(this, false)">
-    <div class="modal-backdrop absolute inset-0"></div>
-    <div class="modal-content absolute inset-0 m-auto h-fit w-full max-w-4xl rounded-2xl shadow-2xl p-6" style="background:var(--card-bg); border:1px solid var(--glass-br);" onclick="event.stopPropagation()">
-      <div class="flex items-center justify-between mb-6">
-        <h2 class="text-2xl sm:text-3xl font-extrabold">فروشگاه سرور</h2>
-        <button class="rounded-lg p-2 hover:bg-white/60 dark:hover:bg-white/10" onclick="toggleModal(document.getElementById('shopModal'), false)" title="بستن">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5"><path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" /></svg>
-        </button>
-      </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Shop Items -->
-        <div class="rounded-2xl overflow-hidden" style="background:var(--card-bg); border:1px solid var(--glass-br); box-shadow:0 6px 20px rgba(0,0,0,.06)">
-          <img src="https://placehold.co/600x400/427c77/ffffff?text=Starter+Pack" alt="پکیج استارتر" class="w-full h-48 object-cover">
-          <div class="p-5">
-            <p class="font-extrabold text-lg">پکیج استارتر</p>
-            <p class="text-slate-600 dark:text-slate-300 text-sm mt-1 mb-4">شامل پول اولیه، یک ماشین معمولی و گواهینامه.</p>
-            <div class="flex items-center justify-between">
-              <p class="font-bold text-lg grad bg-clip-text text-transparent">50,000 تومان</p>
-              <button onclick="addToCart({id: 'p1', name: 'پکیج استارتر', price: 50000, img: 'https://placehold.co/80x80/427c77/ffffff?text=SP'})" class="interactive-button rounded-lg px-4 py-2 text-sm font-semibold bg-slate-900 text-white dark:bg-white dark:text-slate-900 hover:opacity-90 transition">خرید</button>
-            </div>
-          </div>
-        </div>
-        <div class="rounded-2xl overflow-hidden" style="background:var(--card-bg); border:1px solid var(--glass-br); box-shadow:0 6px 20px rgba(0,0,0,.06)">
-          <img src="https://placehold.co/600x400/64c2b8/ffffff?text=VIP" alt="اشتراک VIP" class="w-full h-48 object-cover">
-          <div class="p-5">
-            <p class="font-extrabold text-lg">اشتراک VIP (۱ ماهه)</p>
-            <p class="text-slate-600 dark:text-slate-300 text-sm mt-1 mb-4">دسترسی به ماشین‌های خاص، اسکین‌های ویژه و اولویت در ورود.</p>
-            <div class="flex items-center justify-between">
-              <p class="font-bold text-lg grad bg-clip-text text-transparent">150,000 تومان</p>
-              <button onclick="addToCart({id: 'p2', name: 'اشتراک VIP', price: 150000, img: 'https://placehold.co/80x80/64c2b8/ffffff?text=VIP'})" class="interactive-button rounded-lg px-4 py-2 text-sm font-semibold bg-slate-900 text-white dark:bg-white dark:text-slate-900 hover:opacity-90 transition">خرید</button>
-            </div>
-          </div>
-        </div>
-        <div class="rounded-2xl overflow-hidden" style="background:var(--card-bg); border:1px solid var(--glass-br); box-shadow:0 6px 20px rgba(0,0,0,.06)">
-          <img src="https://placehold.co/600x400/427c77/ffffff?text=Car+Pack" alt="پکیج ماشین" class="w-full h-48 object-cover">
-          <div class="p-5">
-            <p class="font-extrabold text-lg">پکیج ماشین اسپرت</p>
-            <p class="text-slate-600 dark:text-slate-300 text-sm mt-1 mb-4">یک ماشین اسپرت رده بالا به انتخاب شما.</p>
-            <div class="flex items-center justify-between">
-              <p class="font-bold text-lg grad bg-clip-text text-transparent">200,000 تومان</p>
-              <button onclick="addToCart({id: 'p3', name: 'پکیج ماشین اسپرت', price: 200000, img: 'https://placehold.co/80x80/427c77/ffffff?text=Car'})" class="interactive-button rounded-lg px-4 py-2 text-sm font-semibold bg-slate-900 text-white dark:bg-white dark:text-slate-900 hover:opacity-90 transition">خرید</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <!-- Cart Modal -->
-  <div id="cartModal" class="modal modal-cart fixed inset-0 z-[70] hidden" onclick="toggleModal(this, false)">
-    <div class="modal-backdrop absolute inset-0"></div>
-    <div class="modal-content absolute inset-y-0 left-0 w-full max-w-md shadow-2xl p-6" style="background:var(--card-bg); border-right:1px solid var(--glass-br);" onclick="event.stopPropagation()">
-      <div class="flex flex-col h-full">
-        <div class="flex items-center justify-between mb-6 pb-4 border-b border-[color:var(--glass-br)]">
-          <h2 class="text-2xl font-extrabold">سبد خرید</h2>
-          <button class="rounded-lg p-2 hover:bg-white/60 dark:hover:bg-white/10" onclick="toggleModal(document.getElementById('cartModal'), false)" title="بستن">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5"><path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" /></svg>
-          </button>
-        </div>
-        <div id="cartItemsContainer" class="flex-grow overflow-y-auto -mr-2 pr-2">
-          <div id="emptyCartMsg" class="text-center py-10">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-16 h-16 mx-auto text-slate-300 dark:text-slate-600 mb-4"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c.51 0 .962-.343 1.087-.835l.383-1.437M7.5 14.25L5.106 5.165A2.25 2.25 0 002.854 3H2.25" /></svg>
-            <p class="font-bold">سبد خرید شما خالی است.</p>
-            <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">آیتم‌های فروشگاه را مشاهده کنید.</p>
-          </div>
-        </div>
-        <div id="cartFooter" class="pt-4 border-t border-[color:var(--glass-br)]">
-           <div class="flex justify-between items-center mb-4">
-             <span class="text-lg font-bold">جمع کل:</span>
-             <span id="cartTotal" class="text-xl font-extrabold grad bg-clip-text text-transparent">0 تومان</span>
-           </div>
-           <button id="checkoutBtn" class="interactive-button w-full rounded-xl grad text-white py-3 font-bold hover:opacity-90 transition disabled:opacity-50" disabled>پرداخت</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Auth Modal -->
-  <div id="authModal" class="modal fixed inset-0 z-[70] hidden" onclick="toggleModal(this, false)">
-     <div class="modal-backdrop absolute inset-0"></div>
-    <div class="modal-content absolute inset-0 m-auto h-fit w-full max-w-sm rounded-2xl shadow-2xl p-6" style="background:var(--card-bg); border:1px solid var(--glass-br);" onclick="event.stopPropagation()">
-      <div class="flex items-center justify-between mb-3">
-        <p class="text-lg font-extrabold">ورود / ساخت حساب</p>
-        <button class="rounded-lg p-2 hover:bg-white/60 dark:hover:bg-white/10" onclick="toggleModal(document.getElementById('authModal'), false)" title="بستن">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5"><path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" /></svg>
-        </button>
-      </div>
-      <form onsubmit="event.preventDefault(); saveAuth();">
-        <label class="block text-sm font-bold mb-1">نام کاربری</label>
-        <input id="username" class="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white/80 dark:bg-white/10 text-slate-900 dark:text-slate-100 px-3 py-2 mb-3 focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600" placeholder="مثلاً ali_rp"/>
-        <label class="block text-sm font-bold mb-1">ایمیل</label>
-        <input id="email" type="email" class="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white/80 dark:bg-white/10 text-slate-900 dark:text-slate-100 px-3 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600" placeholder="you@example.com"/>
-        <p id="authError" class="text-sm text-red-600 dark:text-red-400 mb-3 hidden"></p>
-        <button class="interactive-button w-full rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-900 py-2 font-bold hover:opacity-90">ورود (نمایشی)</button>
-      </form>
-    </div>
-  </div>
-
-  <script>
-    // --------- Theme persistence ---------
-    const THEME_KEY = 'er_theme';
-    const preferred = localStorage.getItem(THEME_KEY) || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    if(preferred === 'dark') document.documentElement.classList.add('dark');
-
-    function setTheme(mode){
-      document.documentElement.classList.toggle('dark', mode==='dark');
-      localStorage.setItem(THEME_KEY, mode);
-      const isDark = mode==='dark';
-      document.getElementById('themeIcon').textContent = isDark ? '☀️' : '🌙';
-      document.getElementById('themeText').textContent = isDark ? 'لایت' : 'دارک';
-    }
-
-    document.getElementById('themeToggle').addEventListener('click', () => {
-      const nowDark = !document.documentElement.classList.contains('dark');
-      setTheme(nowDark ? 'dark' : 'light');
-    });
-    setTheme(document.documentElement.classList.contains('dark') ? 'dark' : 'light');
-
-    // --------- General Utilities ---------
-    document.getElementById('year').textContent = new Date().getFullYear();
-    function copyIP(){
-      const ip = document.getElementById('serverIP').textContent.trim();
-      navigator.clipboard.writeText(ip).then(()=>{
-        const note = document.getElementById('copyNote');
-        note.style.opacity = '1';
-        setTimeout(()=> note.style.opacity = '0', 1500);
-      });
-    }
-    const base = 120; const jitter = ()=> Math.floor(base + Math.random()*20);
-    setInterval(()=>{ const el = document.getElementById('onlineCount'); if(el) el.textContent = jitter(); }, 4000);
-    
-    // --------- Modal System ---------
-    function toggleModal(modalElement, state) {
-        if (!modalElement) return;
-        modalElement.classList.toggle('hidden', !state);
-    }
-
-    // --------- Cart System ---------
-    let cartItems = [];
-    const cartCountEl = document.getElementById('cartCount');
-    const cartItemsContainer = document.getElementById('cartItemsContainer');
-    const emptyCartMsg = document.getElementById('emptyCartMsg');
-    const cartFooter = document.getElementById('cartFooter');
-    const cartTotalEl = document.getElementById('cartTotal');
-    const checkoutBtn = document.getElementById('checkoutBtn');
-
-    function addToCart(product) {
-        const existingItem = cartItems.find(item => item.id === product.id);
-        if (existingItem) {
-            existingItem.quantity++;
-        } else {
-            cartItems.push({ ...product, quantity: 1 });
-        }
-        updateCart();
-        cartCountEl.classList.add('scale-125');
-        setTimeout(() => cartCountEl.classList.remove('scale-125'), 200);
-    }
-
-    function updateCartItemQuantity(productId, change) {
-        const itemIndex = cartItems.findIndex(item => item.id === productId);
-        if (itemIndex > -1) {
-            const newQuantity = cartItems[itemIndex].quantity + change;
-            if (newQuantity <= 0) {
-                const itemElement = cartItemsContainer.querySelector(`[data-product-id="${productId}"]`);
-                if(itemElement) {
-                    itemElement.classList.add('removing');
-                    setTimeout(() => {
-                        cartItems.splice(itemIndex, 1);
-                        updateCart();
-                    }, 300);
-                } else {
-                    cartItems.splice(itemIndex, 1);
-                    updateCart();
-                }
-            } else {
-                cartItems[itemIndex].quantity = newQuantity;
-                updateCart();
-            }
-        }
-    }
-
-    function updateCart() {
-        renderCartItems();
-        updateCartCount();
-        updateCartTotal();
-    }
-    
-    function renderCartItems() {
-        if (cartItems.length === 0) {
-            cartItemsContainer.innerHTML = '';
-            cartItemsContainer.appendChild(emptyCartMsg);
-            emptyCartMsg.style.display = 'block';
-            cartFooter.style.display = 'none';
-        } else {
-            emptyCartMsg.style.display = 'none';
-            cartFooter.style.display = 'block';
-            cartItemsContainer.innerHTML = cartItems.map(item => `
-              <div class="cart-item flex items-center gap-4 py-3" data-product-id="${item.id}">
-                <img src="${item.img}" alt="${item.name}" class="w-16 h-16 rounded-lg object-cover">
-                <div class="flex-grow">
-                  <p class="font-bold">${item.name}</p>
-                  <p class="text-sm text-slate-500 dark:text-slate-400">${item.price.toLocaleString('fa-IR')} تومان</p>
-                </div>
-                <div class="flex items-center gap-2">
-                  <button onclick="updateCartItemQuantity('${item.id}', -1)" class="w-7 h-7 rounded-md flex items-center justify-center bg-slate-200/60 dark:bg-slate-700/60 hover:bg-slate-300 dark:hover:bg-slate-600">-</button>
-                  <span class="w-6 text-center font-bold">${item.quantity}</span>
-                  <button onclick="updateCartItemQuantity('${item.id}', 1)" class="w-7 h-7 rounded-md flex items-center justify-center bg-slate-200/60 dark:bg-slate-700/60 hover:bg-slate-300 dark:hover:bg-slate-600">+</button>
-                </div>
-              </div>
-            `).join('');
-        }
-    }
-
-    function updateCartCount() {
-        const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
-        cartCountEl.textContent = totalItems;
-    }
-
-    function updateCartTotal() {
-        const total = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        cartTotalEl.textContent = `${total.toLocaleString('fa-IR')} تومان`;
-        checkoutBtn.disabled = total === 0;
-    }
-    
-    updateCart();
-
-    // --------- Auth (mock) ---------
-    const authKey = 'er_auth';
-    const authModal = document.getElementById('authModal');
-    const authError = document.getElementById('authError');
-    
-    function saveAuth(){
-      const u = document.getElementById('username').value.trim();
-      const e = document.getElementById('email').value.trim();
-      if(!u || !e){ 
-        authError.textContent = 'نام کاربری و ایمیل را وارد کنید.';
-        authError.classList.remove('hidden');
-        return; 
-      }
-      authError.classList.add('hidden');
-      localStorage.setItem(authKey, JSON.stringify({u,e}));
-      renderAuth();
-      toggleModal(authModal, false);
-    }
-
-    function logout() {
-        localStorage.removeItem(authKey);
-        renderAuth();
-    }
-    
-    function renderAuth(){
-      const data = localStorage.getItem(authKey);
-      const btn = document.getElementById('authBtn');
-      if(data){
-        const {u} = JSON.parse(data);
-        btn.innerHTML = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor' class='h-5 w-5'><path fill-rule='evenodd' d='M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.75 20.25a8.25 8.25 0 1116.5 0 .75.75 0 01-1.5 0 6.75 6.75 0 10-13.5 0 .75.75 0 01-1.5 0z' clip-rule='evenodd'/></svg><span class='hidden xs:inline'> ${u} </span>`;
-        btn.onclick = logout;
-        btn.title = 'خروج از حساب';
-      } else {
-        btn.innerHTML = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor' class='h-5 w-5'><path d='M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z'/><path fill-rule='evenodd' d='M3.75 20.1a8.25 8.25 0 1116.5 0 .9.9 0 01-.9.9H4.65a.9.9 0 01-.9-.9z' clip-rule='evenodd'/></svg><span class='hidden xs:inline'> ورود / ساخت حساب </span>`;
-        btn.onclick = ()=> toggleModal(authModal, true);
-        btn.title = 'ورود به حساب';
-      }
-    }
-    renderAuth();
-    
-    // --------- Intersection Observer for Animations ---------
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.animated-card').forEach(card => observer.observe(card));
-  </script>
+  <script src="assets/js/app.js"></script>
 </body>
 </html>
-
