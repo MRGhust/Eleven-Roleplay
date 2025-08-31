@@ -5,13 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ورود / ساخت حساب — Eleven Roleplay</title>
   <meta name="description" content="Eleven Roleplay — وب‌سایت سرور رول‌پلی فایوم با طراحی مینیمال، دارک/لایت و افکت شیشه‌ای." />
-  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+  <link rel="icon" type="image/png" href="assets/img/logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script> tailwind.config = { darkMode: 'class' } </script>
   <link rel="stylesheet" href="assets/css/style.css" />
+  <meta name="theme-color" content="#427c77">
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors">
   <header class="sticky top-0 z-50">
@@ -20,7 +21,7 @@
       <div class="mx-auto max-w-6xl px-4">
         <div class="flex h-16 items-center justify-between">
           <a href="index.html" class="flex items-center gap-2 group">
-            <span class="inline-block h-8 w-8 rounded-xl grad shadow-md"></span>
+            <img src="assets/img/logo.png" alt="لوگوی Eleven Roleplay" class="h-8 w-8 rounded-md shadow-md"/>
             <span class="text-xl font-extrabold tracking-wide text-slate-900 dark:text-white group-hover:opacity-80 transition">Eleven Roleplay</span>
           </a>
           <div id="topnav" class="hidden md:flex items-center gap-1">
@@ -37,11 +38,11 @@
             </button>
             <button id="cartBtn" class="interactive-button relative rounded-xl px-3 py-2 text-sm font-semibold hover:bg-white/60 dark:hover:bg-white/10 transition flex items-center gap-2" title="سبد خرید">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"><path d="M2.25 3a.75.75 0 000 1.5h1.513l.401 2.104 1.2 6.297A3.75 3.75 0 009.05 16.5h6.9a3.75 3.75 0 003.686-3.099l.99-5.445A.75.75 0 0019.8 7.2l-.99 5.445a2.25 2.25 0 01-2.21 1.855H9.05a2.25 2.25 0 01-2.212-1.8L5.04 6.3A.75.75 0 004.3 5.7H2.25z"/><path d="M7.5 20.25a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM18 20.25a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/></svg>
-              <span id="cartCount" class="absolute -top-1 -left-1 inline-flex h-5 min-w-[20px] items-center justify-center rounded-full bg-teal-600 text-white text-xs px-1 transition-transform">0</span>
+              <span id="cartCount" class="absolute -top-1 -left-1 inline-flex h-5 min-w-[20px] items-center justify-center rounded-full badge text-xs px-1 transition-transform">0</span>
               <span class="hidden sm:inline">سبد خرید</span>
             </button>
             <div class="h-6 w-px bg-slate-300 dark:bg-slate-700"></div>
-            <button id="authBtn" class="interactive-button rounded-xl px-3 py-2 text-sm font-semibold bg-slate-900 text-white dark:bg-white dark:text-slate-900 hover:opacity-90 transition flex items-center gap-2" title="ورود به حساب"></button>
+            <button id="authBtn" class="interactive-button rounded-xl px-3 py-2 text-sm font-semibold" style="background:var(--brand); color:white;" title="ورود به حساب"></button>
           </div>
         </div>
       </div>
@@ -52,7 +53,7 @@
 
   <main class="py-12">
     <div class="mx-auto max-w-sm px-4">
-      <div class="rounded-2xl p-6 ring-soft" style="background:var(--card-bg); border:1px solid var(--glass-br)">
+      <div class="rounded-2xl p-6 brand-ring" style="background:var(--card-bg); border:1px solid var(--glass-br)">
         <div class="flex items-center justify-between mb-3">
           <p class="text-lg font-extrabold">ورود / ساخت حساب</p>
           <a href="index.html" class="rounded-lg p-2 hover:bg-white/60 dark:hover:bg-white/10" title="بازگشت">
@@ -61,11 +62,11 @@
         </div>
         <form onsubmit="handleLoginSubmit(event)">
           <label class="block text-sm font-bold mb-1">نام کاربری</label>
-          <input id="username" class="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white/80 dark:bg-white/10 text-slate-900 dark:text-slate-100 px-3 py-2 mb-3 focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600" placeholder="مثلاً ali_rp"/>
+          <input id="username" class="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white/80 dark:bg-white/10 text-slate-900 dark:text-slate-100 px-3 py-2 mb-3 focus:outline-none focus:ring-2 focus:ring-[color:var(--brand)]" placeholder="مثلاً ali_rp"/>
           <label class="block text-sm font-bold mb-1">ایمیل</label>
-          <input id="email" type="email" class="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white/80 dark:bg-white/10 text-slate-900 dark:text-slate-100 px-3 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-600" placeholder="you@example.com"/>
+          <input id="email" type="email" class="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white/80 dark:bg-white/10 text-slate-900 dark:text-slate-100 px-3 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-[color:var(--brand)]" placeholder="you@example.com"/>
           <p id="authError" class="text-sm text-red-600 dark:text-red-400 mb-3 hidden"></p>
-          <button class="interactive-button w-full rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-900 py-2 font-bold hover:opacity-90">ورود (نمایشی)</button>
+          <button class="interactive-button w-full rounded-xl py-2 font-bold hover:opacity-90" style="background:var(--brand); color:white;">ورود (نمایشی)</button>
         </form>
       </div>
     </div>

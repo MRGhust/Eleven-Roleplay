@@ -7,11 +7,11 @@ const CART_KEY = 'er_cart';
 /* Products catalog (shared across pages) */
 const ER_PRODUCTS = [
   {id:'p1', name:'پکیج استارتر', price:50000, img:'https://placehold.co/600x400/427c77/ffffff?text=Starter+Pack', thumb:'https://placehold.co/80x80/427c77/ffffff?text=SP', desc:'شامل پول اولیه، یک ماشین معمولی و گواهینامه.'},
-  {id:'p2', name:'اشتراک VIP (۱ ماهه)', price:150000, img:'https://placehold.co/600x400/64c2b8/ffffff?text=VIP', thumb:'https://placehold.co/80x80/64c2b8/ffffff?text=VIP', desc:'دسترسی به ماشین‌های خاص، اسکین‌های ویژه و اولویت در ورود.'},
+  {id:'p2', name:'اشتراک VIP (۱ ماهه)', price:150000, img:'https://placehold.co/600x400/5fb1a7/ffffff?text=VIP', thumb:'https://placehold.co/80x80/5fb1a7/ffffff?text=VIP', desc:'دسترسی به ماشین‌های خاص، اسکین‌های ویژه و اولویت در ورود.'},
   {id:'p3', name:'پکیج ماشین اسپرت', price:200000, img:'https://placehold.co/600x400/427c77/ffffff?text=Car+Pack', thumb:'https://placehold.co/80x80/427c77/ffffff?text=Car', desc:'یک ماشین اسپرت رده بالا به انتخاب شما.'},
-  {id:'p4', name:'نام اختصاصی پلاک', price:80000, img:'https://placehold.co/600x400/2c7a7b/ffffff?text=Plate+Name', thumb:'https://placehold.co/80x80/2c7a7b/ffffff?text=PL', desc:'رزرو یک پلاک اختصاصی مطابق قوانین.'},
-  {id:'p5', name:'خانه متوسط در شهر', price:350000, img:'https://placehold.co/600x400/1f2937/ffffff?text=House', thumb:'https://placehold.co/80x80/1f2937/ffffff?text=H', desc:'ملک مسکونی با پارکینگ (در صورت موجودی).'},
-  {id:'p6', name:'درخواست انتقال نقش', price:30000, img:'https://placehold.co/600x400/64748b/ffffff?text=Role+Transfer', thumb:'https://placehold.co/80x80/64748b/ffffff?text=RT', desc:'انتقال نقش/شخصیت بین اکانت‌ها (قوانین انتقال اعمال می‌شود).'},
+  {id:'p4', name:'نام اختصاصی پلاک', price:80000, img:'https://placehold.co/600x400/2e5f5a/ffffff?text=Plate+Name', thumb:'https://placehold.co/80x80/2e5f5a/ffffff?text=PL', desc:'رزرو یک پلاک اختصاصی مطابق قوانین.'},
+  {id:'p5', name:'خانه متوسط در شهر', price:350000, img:'https://placehold.co/600x400/375f5a/ffffff?text=House', thumb:'https://placehold.co/80x80/375f5a/ffffff?text=H', desc:'ملک مسکونی با پارکینگ (در صورت موجودی).'},
+  {id:'p6', name:'درخواست انتقال نقش', price:30000, img:'https://placehold.co/600x400/6aaea4/ffffff?text=Role+Transfer', thumb:'https://placehold.co/80x80/6aaea4/ffffff?text=RT', desc:'انتقال نقش/شخصیت بین اکانت‌ها (قوانین انتقال اعمال می‌شود).'},
 ];
 
 /* ====== Utilities ====== */
@@ -48,7 +48,8 @@ function renderAuth(){
   if(!btn) return;
   const data = getAuth();
   if(data){
-    btn.innerHTML = "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor' class='h-5 w-5'><path fill-rule='evenodd' d='M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.75 20.25a8.25 8.25 0 1116.5 0 .75.75 0 01-1.5 0 6.75 6.75 0 10-13.5 0 .75.75 0 01-1.5 0z' clip-rule='evenodd'/></svg><span class='hidden xs:inline'> " + data.u + " </span>";
+    btn.innerHTML = "<img src='assets/img/logo.png' alt='' class='h-5 w-5'/>" +
+      "<span class='hidden xs:inline'> " + data.u + " </span>";
     btn.title = 'خروج از حساب';
     btn.onclick = logout;
   } else {
@@ -199,18 +200,18 @@ function markActiveNav(){
   });
 }
 
-/* ====== Shop Page Builder (optional) ====== */
+/* ====== Shop Page Builder ====== */
 function buildShopGrid(){
   const grid = $('#shopGrid'); if(!grid) return;
   grid.innerHTML = ER_PRODUCTS.map(p => `
-    <div class="rounded-2xl overflow-hidden" style="background:var(--card-bg); border:1px solid var(--glass-br); box-shadow:0 6px 20px rgba(0,0,0,.06)">
+    <div class="rounded-2xl overflow-hidden brand-border" style="background:var(--card-bg); border:1px solid var(--glass-br); box-shadow:0 6px 20px rgba(0,0,0,.06)">
       <img src="${p.img}" alt="${p.name}" class="w-full h-48 object-cover">
       <div class="p-5">
         <p class="font-extrabold text-lg">${p.name}</p>
         <p class="text-slate-600 dark:text-slate-300 text-sm mt-1 mb-4">${p.desc}</p>
         <div class="flex items-center justify-between">
           <p class="font-bold text-lg grad-text">${formatPrice(p.price)}</p>
-          <button data-add="${p.id}" class="interactive-button rounded-lg px-4 py-2 text-sm font-semibold bg-slate-900 text-white dark:bg-white dark:text-slate-900 hover:opacity-90 transition">خرید</button>
+          <button data-add="${p.id}" class="interactive-button rounded-lg px-4 py-2 text-sm font-semibold" style="background:var(--brand); color:white;">خرید</button>
         </div>
       </div>
     </div>
